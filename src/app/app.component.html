@@ -1,0 +1,163 @@
+<h5>Virtual Scroll with Preloaded Data ({{procedures?.searchPatientProcedureResultInfo?.length}} Rows)</h5>
+<table-container>
+    <p-table [value]="procedures?.searchPatientProcedureResultInfo" [columns]="allColumns" [scrollable]="true"
+        scrollHeight="650px" [rows]="200" [virtualScroll]="true" [virtualRowHeight]="40">
+        <ng-template pTemplate="header" let-columns>
+            <tr style="height:40px">
+                <th *ngFor="let column of columns; let i1 = index" [style.width]="column.minWidth">
+                    {{column.val}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-procedure let-rowIndex="rowIndex" let-columns="columns">
+            <tr style="height:40px" [id]="'procedurePk_'+rowIndex">
+                <td *ngFor="let column of columns; let i1 = index" [style.width]="column.minWidth"
+                    [ngClass]="i1 === 0 ? 'first-cell-padding': ''">
+
+                    <sh-text [id]="'patientName' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'patientName'">
+                        {{ procedure.patientNameDetail }}
+                    </sh-text>
+
+                    <sh-text [id]="'ideographicName' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'ideographicName'">
+                        {{ procedure.ideographicName }}
+                    </sh-text>
+
+                    <sh-text [id]="'phoneticName' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'phoneticName'">
+                        {{ procedure.phoneticName }}
+                    </sh-text>
+
+                    <sh-text [id]="'patientBirthDate' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'patientBirthDate'">
+                        {{ procedure.patientBirthDate }}
+                    </sh-text>
+
+                    <sh-text [id]="'patientId' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'patientId'">
+                        {{ procedure.patientId }}
+                    </sh-text>
+
+                    <sh-text [id]="'patientIdAuthorityName' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'patientIdAuthorityName'">
+                        {{ procedure.patientIdAuthorityName }}
+                    </sh-text>
+
+                    <sh-text [id]="'sex' + '_' + rowIndex + '_' + i1" class="truncate" *ngIf="column.val === 'sex'">
+                        {{ procedure.sex }}
+                    </sh-text>
+
+                    <sh-text [id]="'xadPatientID' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'xadPatientID'">
+                        {{ procedure.xadPatientID }}
+                    </sh-text>
+
+                    <sh-text [id]="'admittingDoctor' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'admittingDoctor'">
+                        {{ procedure.admittingDoctor }}
+                    </sh-text>
+
+                    <sh-text [id]="'patientClass' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'patientClass'">
+                        {{ procedure.patientClass }}
+                    </sh-text>
+
+                    <sh-text [id]="'accessionNumber' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'accessionNumber'">
+                        {{ procedure.accessionNumber }}
+                    </sh-text>
+
+                    <sh-text [id]="'accessionNumberAuthorityName' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'accessionNumberAuthorityName'">
+                        {{ procedure.accessionNumberAuthorityName }}
+                    </sh-text>
+
+                    <sh-text [id]="'procedureDescription' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'procedureDescription'">
+                        {{ procedure.procedureDescription }}
+                    </sh-text>
+
+                    <sh-text [id]="'modality' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'modality'">
+                        {{ procedure.modality?.split('/').join(', ') }}
+                    </sh-text>
+
+                    <sh-text [id]="'objects' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'objects'">
+                        {{ procedure.objects }}
+                    </sh-text>
+                    <ng-container *ngIf="column.val === 'onlineInformation'">
+                        <sh-badge [id]="'onlineInformation' + '_' + rowIndex + '_' + i1">
+                        </sh-badge>
+                    </ng-container>
+
+                    <sh-text [id]="'retrieveAeTitle' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'retrieveAeTitle'">
+                        {{ procedure.retrieveAETitle }}
+                    </sh-text>
+
+                    <sh-text [id]="'studyDate' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'studyDate'">
+                        {{ procedure.studyDateInDisplay }}
+                    </sh-text>
+
+                    <sh-text [id]="'workflowState' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'workflowState'">
+                        {{ procedure.workflowState }}
+                    </sh-text>
+
+                    <sh-text [id]="'enterersLocation' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'enterersLocation'">
+                        {{ procedure.enterersLocation }}
+                    </sh-text>
+
+                    <sh-text [id]="'enterer' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'enterer'">
+                        {{ procedure.enterer }}
+                    </sh-text>
+
+                    <sh-text [id]="'lrIndicator' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'lrIndicator'">
+                        {{ procedure.lrIndicator }}
+                    </sh-text>
+
+                    <ng-container *ngIf="column.val === 'orderPriority'">
+                        <sh-icon icon="warning-triangle" color="red" size="xs"
+                            [id]="'orderPriority' + '_' + rowIndex + '_' + i1"
+                            *ngIf="procedure.orderPriority === 'STAT'"></sh-icon>
+                        <sh-icon icon="high-prority" color="yellow" size="xs"
+                            [id]="'orderPriority' + '_' + rowIndex + '_' + i1"
+                            *ngIf="procedure.orderPriority === 'HIGH'"></sh-icon>
+                    </ng-container>
+
+                    <sh-text [id]="'orderReferringDoctor' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'orderReferringDoctor'">
+                        {{ procedure.orderReferringDoctor }}
+                    </sh-text>
+
+                    <sh-text [id]="'risBodyPart' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'risBodyPart'">
+                        {{ procedure.risBodyPart }}
+                    </sh-text>
+
+                    <sh-text [id]="'facility' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'facility'">
+                        {{ procedure.facility }}
+                    </sh-text>
+
+                    <sh-text [id]="'reasonForStudy' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'reasonForStudy'">
+                        {{ procedure.reasonForStudy }}
+
+                    </sh-text>
+
+                    <sh-text [id]="'producer' + '_' + rowIndex + '_' + i1" class="truncate"
+                        *ngIf="column.val === 'producer'">
+                        {{ procedure.producer }}
+                    </sh-text>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</table-container>
