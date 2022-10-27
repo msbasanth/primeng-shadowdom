@@ -1,4 +1,5 @@
 <p-table
+  *ngIf="display"
   [value]="procedures?.searchPatientProcedureResultInfo"
   [columns]="allColumns"
   [scrollable]="true"
@@ -9,7 +10,7 @@
   [style]="{ width: '2000px', height: '200px' }"
 >
   <ng-template pTemplate="header" let-columns>
-    <tr style="height: 40px">
+    <tr style="height: 40px" [ngClass]="{ 'row-accessories': true }">
       <th
         *ngFor="let column of columns; let i1 = index"
         [style.width]="column.minWidth"
@@ -24,7 +25,11 @@
     let-rowIndex="rowIndex"
     let-columns="columns"
   >
-    <tr style="height: 40px" [id]="'procedurePk_' + rowIndex">
+    <tr
+      style="height: 40px"
+      [ngClass]="{ 'row-accessories': true }"
+      [id]="'procedurePk_' + rowIndex"
+    >
       <td
         *ngFor="let column of columns; let i1 = index"
         [style.width]="column.minWidth"
