@@ -1,3 +1,19 @@
+/* PrimeNG */
+
+@import "../node_modules/primeicons/primeicons.css";
+@import "../node_modules/primeflex/primeflex.css";
+@import "../node_modules/primeng/resources/themes/saga-blue/theme.css";
+@import "../node_modules/primeng/resources/primeng.min.css";
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+label {
+  cursor: inherit;
+}
+
 /* Global Styles */
 
 * {

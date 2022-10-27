@@ -7,6 +7,7 @@ import "../assets/table-container.js";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  styleUrls: ['../styles.scss'],
 })
 export class AppComponent  implements OnInit{
   allColumns: any = (allReportingColumns as any).default;

@@ -1,7 +1,8 @@
 <h5>Virtual Scroll with Preloaded Data ({{procedures?.searchPatientProcedureResultInfo?.length}} Rows)</h5>
 <table-container>
     <p-table [value]="procedures?.searchPatientProcedureResultInfo" [columns]="allColumns" [scrollable]="true"
-        scrollHeight="650px" [rows]="200" [virtualScroll]="true" [virtualRowHeight]="40">
+        scrollHeight="650px" [rows]="200" [virtualScroll]="true" [virtualRowHeight]="40"
+        [style]="{width:'500px',height:'600px'}">
         <ng-template pTemplate="header" let-columns>
             <tr style="height:40px">
                 <th *ngFor="let column of columns; let i1 = index" [style.width]="column.minWidth">

@@ -25,16 +25,26 @@ export class TableContainer extends LitElement {
     };
   }
 
-  pageContentTemplate() {
-    return html`
-      <div class="body-wrapper" ?scrollable="${this.scrollable}">
-        <slot></slot>
-      </div>
-    `;
-  }
+  static styles = css`
+    :host {
+      width: 100%;
+      height: 1000px;
+      display: block;
+    }
+
+    .page-wrapper {
+      display: block;
+      width: 100%;
+      height: 1000px;
+    }
+  `;
+
+  /*createRenderRoot() {
+    return this;
+  }*/
 
   render() {
-    return html` <slot></slot> `;
+    return html`<div class="page-wrapper"><slot></slot></div>`;
   }
 
   constructor() {
