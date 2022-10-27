@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { AppComponent } from './app.component';
+import { PtableWrapperComponent } from './ptable-wrapper/ptable-wrapper.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { AppComponent } from './app.component';
     RouterModule
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    PtableWrapperComponent
   ],
   bootstrap: [
     AppComponent

@@ -1,30 +1,39 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import * as allReportingColumns from '../assets/reporting-column-option.json';
-import { ChangeDetectorRef } from '@angular/core';
-import "../assets/table-container.js";
+import {
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
+import '../assets/table-container.js';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['../styles.scss'],
 })
-export class AppComponent  implements OnInit{
-  allColumns: any = (allReportingColumns as any).default;
-  procedures: any;
-  display = false;
-  index: number = 1;
-  constructor(private http: HttpClient, private cdRef:ChangeDetectorRef) {}
+export class AppComponent implements OnInit {
+  @ViewChild('viewContainerRef', { read: ViewContainerRef, static: true })
+  public orderedViewContainer: ViewContainerRef;
+
+  constructor(
+    public viewContainerRef: ViewContainerRef,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
-    this.http.get('../assets/large-dataset.json').subscribe(proc => {
-      console.log(proc);
-      this.procedures = proc;
-      this.display = true;
-    });
-
+    this.addDynamicFoodChoice();
   }
 
+  public async addDynamicFoodChoice(): Promise<void> {
+    const { PtableWrapperComponent } = await import(
+      './ptable-wrapper/ptable-wrapper.component'
+    );
+    const componentRef = this.orderedViewContainer.createComponent(
+      PtableWrapperComponent
+    );
+    this.cdr.detectChanges();
+  }
 }
 
 export class Car {
@@ -33,7 +42,7 @@ export class Car {
   year: string;
   brand: string;
   color: string;
-  constructor(){
+  constructor() {
     this.id = '';
     this.color = '';
     this.vin = '';
